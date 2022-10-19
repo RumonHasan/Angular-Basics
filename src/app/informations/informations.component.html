@@ -1,9 +1,22 @@
 <h1>Welcome to 
     {{informationHeader}}
 </h1>
-
-
-
-<div [innerText]="numberOfInformations">
-
+<!-- data binding through html attributes.. note only valid html attributes are accepted-->
+<div [hidden]="hideRooms">
+    Number of Informations:
+    <div [innerText]="numberOfInformations"></div>
 </div>
+
+<!-- Optional chaining -->
+{{informations?.availableInformations ?? 'No information available'}}
+
+<!-- directives -->
+<div *ngIf="informations.availableInformations > 0">
+    Display this block if total information exceeds 10
+</div>
+
+<button (click)="toggle()">Toggle Something</button>
+
+
+
+<!--document.getElementById('numberOfInformation') = numberOfInformation -->
