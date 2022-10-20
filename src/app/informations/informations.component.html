@@ -5,18 +5,44 @@
 <div [hidden]="hideRooms">
     Number of Informations:
     <div [innerText]="numberOfInformations"></div>
+    <!-- {{informationList}} -->
+    <table>
+        <tr>
+            <th>Even/odd Indexes</th>
+            <th>Info Num</th>
+            <th>Info type</th>
+            <th>Ammenities</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th>Check In</th>
+            <th>Check Out</th>
+        </tr>
+        <!--
+             looping over and displaying single elements 
+        -->
+        <tr  *ngFor="let singleInformation of informationList; 
+        let even = even; let odd = odd; let index = index" [ngClass]="even ? 'even' : 'odd'">
+            <td>
+                {{even ? 'Even' : 'Odd'}}
+            </td>
+            <td (click)="displayDetails({demoNumber: singleInformation.infoNumber})">{{singleInformation.infoNumber}}</td>
+            <td>{{singleInformation.infoType}}</td>
+            <td>{{singleInformation.ammenities}}</td>
+            <td>{{singleInformation.price}}</td>
+            <td>{{singleInformation.image}}</td>
+            <td>{{singleInformation.checkInTime}}</td>
+            <td>{{singleInformation.checkOutTime}}</td>
+        </tr>
+    </table>
 </div>
 
 <!-- Optional chaining -->
-{{informations?.availableInformations ?? 'No information available'}}
-
+{{informations.availableInformations ?? 'No information available'}}
 <!-- directives -->
 <div *ngIf="informations.availableInformations > 0">
     Display this block if total information exceeds 10
 </div>
 
 <button (click)="toggle()">Toggle Something</button>
-
-
 
 <!--document.getElementById('numberOfInformation') = numberOfInformation -->

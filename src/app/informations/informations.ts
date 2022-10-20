@@ -5,10 +5,15 @@ export interface Information {
 }
 
 export interface InformationList {
+    infoNumber: Number;
     infoType: String;
     ammenities: String;
     price: number;
     image: string;
     checkInTime: Date;
     checkOutTime: Date;
+}
+
+export interface BasicId {
+    demoNumber: Number;
 }
