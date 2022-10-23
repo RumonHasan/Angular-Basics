@@ -23,39 +23,49 @@ export class InformationsComponent implements OnInit {
     bookedInformation: 340,
   };
   // information data as array of objects
+
   // syntax for specifying array of objects
-  informationList: InformationList[] = [
-    {
-      infoNumber: 1,
-      infoType: 'special Info',
-      ammenities: 'many',
-      price: 20,
-      image: 'https://unsplash.com/photos/tq1AJDitMwE',
-      checkInTime: new Date('20-October-2022'),
-      checkOutTime: new Date('21-December-2022')
-    },
-    {
-      infoNumber: 2,
-      infoType: 'Exclusive Info',
-      ammenities: 'many',
-      price: 40,
-      image: 'https://unsplash.com/photos/IafzlPZi1XQ',
-      checkInTime: new Date('20-October-2022'),
-      checkOutTime: new Date('21-December-2022')
-    },
-    {
-      infoNumber: 3,
-      infoType: 'Specific Infor',
-      ammenities: 'many',
-      price: 30,
-      image: 'https://unsplash.com/photos/CoIuT17eVrg',
-      checkInTime: new Date('20-October-2022'),
-      checkOutTime: new Date('21-December-2022')
-    }
-  ]
+  informationList: InformationList[] = [];
+
+  // selected Information
+  storedInformationFromChild!: InformationList;
+  
   constructor() { }
 
   ngOnInit(): void {
+    // moving the information json list to ngOnInit
+      this.informationList = [
+        {
+          infoNumber: 1,
+          infoType: 'special Info',
+          ammenities: 'many',
+          price: 20,
+          image: 'https://unsplash.com/photos/tq1AJDitMwE',
+          checkInTime: new Date('20-October-2022'),
+          checkOutTime: new Date('21-December-2022'),
+          infoRate: 4.5
+        },
+        {
+          infoNumber: 2,
+          infoType: 'Exclusive Info',
+          ammenities: 'many',
+          price: 40,
+          image: 'https://unsplash.com/photos/IafzlPZi1XQ',
+          checkInTime: new Date('20-October-2022'),
+          checkOutTime: new Date('21-December-2022'),
+          infoRate: 4.5
+        },
+        {
+          infoNumber: 3,
+          infoType: 'Specific Infor',
+          ammenities: 'many',
+          price: 30,
+          image: 'https://unsplash.com/photos/CoIuT17eVrg',
+          checkInTime: new Date('20-October-2022'),
+          checkOutTime: new Date('21-December-2022'),
+          infoRate: 4.5
+        }
+      ]
     }
   // basic toggle function to switch between boolean
   toggle(){
@@ -67,6 +77,11 @@ export class InformationsComponent implements OnInit {
     const {demoNumber} = newNumber;
     console.log(demoNumber);
 
+  }
+
+  // information received from the parent component
+  selectInformation(information: InformationList){
+    this.storedInformationFromChild = information;
   }
 
 };

@@ -12,6 +12,7 @@ export interface InformationList {
     image: string;
     checkInTime: Date;
     checkOutTime: Date;
+    infoRate: Number;
 }
 
 export interface BasicId {

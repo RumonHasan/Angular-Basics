@@ -1,0 +1,39 @@
+<p>informations-list works!</p>
+<table class="table">
+    <tr>
+        <th>Even/odd Indexes</th>
+        <th>Info Num</th>
+        <th>Info type</th>
+        <th>Ammenities</th>
+        <th>Price</th>
+        <th>Image</th>
+        <th>Check In</th>
+        <th>Check Out</th>
+        <th>Info Rate</th>
+        <th>Select Information</th>
+    </tr>
+    <!--
+         looping over and displaying single elements 
+    -->
+    <tr *ngFor="let singleInformation of informations; 
+    let even = even; let odd = odd; let index = index" [ngClass]="even ? 'even' : 'odd'">
+        <td>
+            {{even ? 'Even' : 'Odd'}}
+        </td>
+        <td>{{singleInformation.infoNumber}}</td>
+        <td>{{singleInformation.infoType}}</td>
+        <td>{{singleInformation.ammenities}}</td>
+        <td>{{singleInformation.price | currency : 'GBP'}}</td>
+        <td>{{singleInformation.image}}</td>
+        <td>{{singleInformation.checkInTime | date : 'short'}}</td>
+        <td>{{singleInformation.checkOutTime}}</td>
+        <td>{{singleInformation.infoRate}}</td>
+        <td>
+            <button
+            class="btn btn-primary"
+            (click)="selectInformation(singleInformation)">
+                Send Back Information To Parent
+            </button>
+        </td>
+    </tr>
+</table>
