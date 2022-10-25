@@ -1,8 +1,12 @@
-<h1>Welcome to 
+<!-- <h1>Welcome to 
     <div [ngStyle]="{'color': informations.availableInformations > 20 ? 'green': 'red'}">
         {{informationHeader}}
     </div>
-</h1>
+</h1> -->
+
+<basic-header #headerFromSomewhere>
+
+</basic-header>
 
 <!-- -->
 <div *ngIf="storedInformationFromChild">
@@ -14,11 +18,18 @@
     Number of Informations:
     <div [innerText]="numberOfInformations"></div>
     <!-- {{informationList}} -->
-    <basic-informations-list [informations]="informationList"
-    (selectedInformation)="selectInformation($event)"
-    ></basic-informations-list>
-    
 </div>
+<basic-informations-list [informations]="informationList"
+[title] = "title"
+(selectedInformation)="selectInformation($event)"
+></basic-informations-list>
+
+<div>
+    <button (click)="addInformation()">
+        Add Room
+    </button>
+</div>
+
 
 <!-- Optional chaining -->
 <!-- {{informations.availableInformations ?? 'No information available'}} -->
